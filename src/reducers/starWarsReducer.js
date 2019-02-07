@@ -1,6 +1,6 @@
-import {FETCH_CHARACTER_START,
-        FETCH_CHARACTER_Success,
-        FETCH_CHARACTER_ERROR
+import {FETCH_CHARACTER_FETCHING,
+        FETCH_CHARACTER_SUCCESS,
+        FETCH_CHARACTER_FAILURE
         } from "../actions";
 
 const initialState = {
@@ -11,20 +11,21 @@ const initialState = {
 };
 export const charsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_CHARACTER_START:
+    case FETCH_CHARACTER_FETCHING:
       return {
         ...state,
-        fetching: true
+        fetching: true,
+       
       };
     
-    case FETCH_CHARACTER_Success:
+    case FETCH_CHARACTER_SUCCESS:
       return {
         ...state,
         fetching: false,
-        characters: action.payload
+        characters: [...state.characters, ...action.payload]
       };
     
-    case FETCH_CHARACTER_ERROR:
+    case FETCH_CHARACTER_FAILURE:
       return {
         ...state,
         error: action.payload,
@@ -38,4 +39,7 @@ export const charsReducer = (state = initialState, action) => {
   }
 };
 
-export default charsReducer;
+
+
+
+
