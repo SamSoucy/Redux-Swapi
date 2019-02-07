@@ -1,14 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { CharacterListView } from "./views";
 import "./styles/App.css";
 
-function App(){
-  return (
-      <div>
-      <CharacterListView />;
-      </div>
-    );
+class App extends Component {
+  render() {
+    return <CharacterListView />
   }
-  
-  export default App;
+}
+
+export default App;
